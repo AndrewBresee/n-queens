@@ -115,12 +115,23 @@
     //
     // test if a specific column on this board contains a conflict
     hasColConflictAt: function(colIndex) {
-      return false; // fixme
+      var rows = this.rows(); 
+      for(var i=0;i<rows.length-1;i++){
+        for(var j=i+1;j<rows.length;j++){
+          if(rows[i][colIndex] === 1 && rows[j][colIndex] === 1){
+            return true; 
+          }
+        }
+      }
+      return false; 
     },
 
     // test if any columns on this board contain conflicts
     hasAnyColConflicts: function() {
-      return false; // fixme
+      var rows = this.rows();
+      for (var i = 0; i < rows.length ; i++) {
+        return this.hasColConflictAt( i );
+      }
     },
 
 
