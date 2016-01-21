@@ -184,28 +184,26 @@
       var rows = this.rows();
       var index = minorDiagonalColumnIndexAtFirstRow;
       var count = 0;
-
-      //index (col) =  0,1,2,3,1,2,3,4,2,3,4,5,3,4,5,6; 
-      //i (row) = 0,1,2,3 
-
-      for (var i=0; i<rows.length; i++) {
-        if(rows[i][index] === 1){
+      for (var i=0; i<rows.length; i++ ) {
+        if(rows[i][index -i] === 1) {
           count++;
-        }
-        index = i - index;
-        console.log("index : ", index);
+        } 
       }
-
-      if(count > 1){
-        return true; 
-      }         
-      return false; 
+      if (count >1) {
+        return true;
+      }
+      return false;
     },
  
 
     // test if any minor diagonals on this board contain conflicts
     hasAnyMinorDiagonalConflicts: function() {
-      return false; // fixme
+      for (var i = 0; i < this.rows().length*2; i++) {
+        if (this.hasMinorDiagonalConflictAt(i)) {
+          return true;
+        }
+      }
+      return false;
     }
 
     /*--------------------  End of Helper Functions  ---------------------*/
