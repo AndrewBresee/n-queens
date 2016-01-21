@@ -141,7 +141,25 @@
     //
     // test if a specific major diagonal on this board contains a conflict
     hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
-      return false; // fixme
+      var rows = this.rows();
+      var index = majorDiagonalColumnIndexAtFirstRow;
+
+      var count = 0;
+
+      for(var i=0;i<rows.length;i++){
+        
+        if(rows[i][index] === 1){
+          count++;
+        }
+        
+        index++;
+
+      }
+
+      if(count > 1){
+        return true; 
+      }         
+      return false; 
     },
 
     // test if any major diagonals on this board contain conflicts
