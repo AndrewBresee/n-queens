@@ -144,16 +144,17 @@
       var rows = this.rows();
       var index = majorDiagonalColumnIndexAtFirstRow;
 
+       console.log("majorDiagonalColumnIndexAtFirstRow :",majorDiagonalColumnIndexAtFirstRow);
       var count = 0;
+      if(index >= 0){
+        // console.log("Index Test: ",index);
+      }
 
       for(var i=0;i<rows.length;i++){
-        
         if(rows[i][index] === 1){
           count++;
         }
-        
         index++;
-
       }
 
       if(count > 1){
@@ -164,7 +165,17 @@
 
     // test if any major diagonals on this board contain conflicts
     hasAnyMajorDiagonalConflicts: function() {
-      return false; // fixme
+      var rows = this.rows();
+
+      for( var i = 0 - rows.length +1; i < rows.length; i++ ) {
+        if(this.hasMajorDiagonalConflictAt(i)){
+          return true;
+        }
+      }
+      return false; 
+
+
+
     },
 
 
